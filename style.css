@@ -1,0 +1,249 @@
+/* ===== Colors & fonts: change these to reskin the whole page ===== */
+
+:root {
+  --background: #14161c;
+  --panel: #1d2029;
+  --border: #2c303c;
+  --text: #e8eaf0;
+  --muted: #8a90a0;
+  --accent: #9b7bff;
+  --accent-text: #14161c;
+  --error: #ff6b6b;
+  --font: "Segoe UI", sans-serif;
+  --radius: 10px;
+}
+
+
+/* ===== Page ===== */
+
+body {
+  margin: 0;
+  padding: 16px;
+  background: var(--background);
+  color: var(--text);
+  font-family: var(--font);
+}
+
+header {
+  margin-bottom: 16px;
+}
+
+h1 {
+  margin: 0;
+}
+
+#intro {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+h2 {
+  margin: 0 0 12px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+section {
+  padding: 16px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+
+/* ===== Layout: redeems and voices on the left, everything else on the right ===== */
+
+main {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  align-items: start;
+  gap: 16px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+
+/* ===== Buttons ===== */
+
+button {
+  padding: 6px 14px;
+  background: var(--border);
+  color: var(--text);
+  border: none;
+  border-radius: 999px;
+  font: inherit;
+  cursor: pointer;
+}
+
+button.primary {
+  display: block;
+  margin: 12px 0 0 auto;
+  padding: 8px 28px;
+  background: var(--accent);
+  color: var(--accent-text);
+  font-weight: 600;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+
+/* ===== Redeems and voices: selectable rows ===== */
+
+.redeem,
+.voice {
+  display: block;
+  padding: 8px 10px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.redeem:has(input:checked),
+.voice:has(input:checked) {
+  border-color: var(--accent);
+  background: var(--background);
+}
+
+.redeem input,
+.voice input {
+  position: absolute;
+  opacity: 0;
+}
+
+.name {
+  font-weight: 600;
+}
+
+
+/* ===== Redeems: a row of pills that wraps if it runs out of room ===== */
+
+#redeems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.redeem {
+  padding: 6px 14px;
+  border-color: var(--border);
+  border-radius: 999px;
+}
+
+
+/* ===== Voices ===== */
+
+.voice {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 12px;
+  align-items: center;
+}
+
+.voice .description {
+  grid-column: 1;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.voice .play {
+  grid-row: 1 / span 2;
+  grid-column: 2;
+}
+
+
+/* ===== Suggested emotions and sounds ===== */
+
+.tags:has(#tags:empty) {
+  display: none;
+}
+
+.hint {
+  margin: -8px 0 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+#tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  cursor: grab;
+}
+
+.tag:hover {
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+
+/* ===== Message ===== */
+
+.message-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+#selected-voice {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+#count.over {
+  color: var(--error);
+}
+
+textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 140px;
+  padding: 12px;
+  background: var(--background);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font: inherit;
+}
+
+
+/* ===== Output ===== */
+
+#output {
+  min-height: 1.5em;
+  margin: 0;
+  padding: 12px;
+  background: var(--background);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  font: inherit;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+#output:empty::before {
+  content: "Your message will appear here";
+  color: var(--muted);
+}
+
+
+/* ===== Phones: stack everything in one column ===== */
+
+@media (max-width: 800px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}
