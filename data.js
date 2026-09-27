@@ -1,6 +1,6 @@
 var TTS_BUILDER = {
   "title": "Bearnoby's TTS Builder",
-  "intro": "Construct your TTS message here.",
+  "intro": "Construct your TTS message here c:",
   "maxChars": 500,
   "redeems": [
     {
@@ -62,13 +62,6 @@ var TTS_BUILDER = {
             "whispers",
             "yawn"
           ]
-        },
-        {
-          "name": "American Woman",
-          "description": "stay away from meeeeeee~",
-          "prefix": "[woman] ",
-          "sample": "samples/f66dfd5480fa411e91e9664031f0d50f.mp3",
-          "tags": []
         }
       ]
     },
